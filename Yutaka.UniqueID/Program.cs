@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Yutaka.Utils;
 
 namespace Yutaka.UniqueID
 {
@@ -16,7 +17,7 @@ namespace Yutaka.UniqueID
 			Application.SetCompatibleTextRenderingDefault(false);
 			//Application.Run(new Form1());
 			var now = DateTime.Now;
-			Clipboard.SetText(now.ToString("yyyy MMdd HHmm ssff"));
+			Clipboard.SetText(Base36.UniqueID(now));
 			ShowBalloonTip(body: String.Format("Current time copied to clipboard!\n{0}", now.ToString("M/d/yyyy HH:mmtt").ToLower()));
 			Application.Exit();
 		}
